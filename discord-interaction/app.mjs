@@ -1,3 +1,5 @@
+import nacl from "tweetnacl";
+
 /**
  *
  * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
@@ -10,7 +12,6 @@
  * @returns {Object} object - API Gateway Lambda Proxy Output Format
  *
  */
-const nacl = require('tweetnacl');
 const PUBLIC_KEY = '44086f5a33b3b118814eeea782ed009ae7d0235e581e8a5319ba47cc6bd0dd7c';
 
 export const lambdaHandler = async (event, context) => {
@@ -20,7 +21,7 @@ export const lambdaHandler = async (event, context) => {
     const timestamp = event.headers['x-signature-timestamp'];
     const strBody = event.body; // should be string, for successful sign
 
-    const isVerified = nacl.sign.detached.verify(
+    const isVerified = nacl.sign.detacheds.verify(
         Buffer.from(timestamp + strBody),
         Buffer.from(signature, 'hex'),
         Buffer.from(PUBLIC_KEY, 'hex')
