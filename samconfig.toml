@@ -4,7 +4,7 @@ version = 0.1
 
 [default]
 [default.global.parameters]
-stack_name = "discord-js"
+stack_name = "discord-interaction"
 
 [default.build.parameters]
 cached = true
@@ -16,7 +16,6 @@ lint = true
 [default.deploy.parameters]
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
-resolve_s3 = true
 
 [default.package.parameters]
 resolve_s3 = true
