@@ -14,7 +14,7 @@ const nacl = require('tweetnacl');
 const PUBLIC_KEY = '44086f5a33b3b118814eeea782ed009ae7d0235e581e8a5319ba47cc6bd0dd7c';
 
 export const lambdaHandler = async (event, context) => {
-    console.log(event)
+    console.info("EVENT\n" + JSON.stringify(event, null, 2))
 
     const signature = event.headers['x-signature-ed25519']
     const timestamp = event.headers['x-signature-timestamp'];
